@@ -1,5 +1,7 @@
 FROM ubuntu:latest
 
+ARG CHANGE_USER=0
+
 RUN set -ex; \
 	apt-get update; \
 	apt-get install -y \
@@ -13,7 +15,8 @@ RUN set -ex; \
 		-path /sys \
 	\) -prune -o \( \
 		-exec chmod g=u {} \; -a \
-		-exec chgrp 0 {} \; \
+		-exec chgrp 0 {} \; -a \
+		-exec chown $CHANGE_USER {} \; \
 	\)	
 
 CMD ["sleep", "infinity"]
