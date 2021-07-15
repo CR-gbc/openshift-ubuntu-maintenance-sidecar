@@ -8,3 +8,6 @@ RUN set -ex; \
 	rm -rf /var/lib/apt/lists/*	
 
 CMD ["sleep", "infinity"]
+
+SHELL ["/bin/bash", "-c"]
+
