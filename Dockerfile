@@ -5,7 +5,15 @@ RUN set -ex; \
 	apt-get install -y \
 		rsync \
 	; \
-	rm -rf /var/lib/apt/lists/*	
+	rm -rf /var/lib/apt/lists/*; \
+	find / \( \
+		-path /proc -o \
+		-path /dev -o \
+		-path /sys \
+	\) -prune -o \( \
+		-exec chmod g=u {} \; -a \
+		-exec chgrp 0 {} \; \
+	\)	
 
 CMD ["sleep", "infinity"]
 
