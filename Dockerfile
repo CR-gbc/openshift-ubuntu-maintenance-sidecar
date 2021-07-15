@@ -6,6 +6,7 @@ RUN set -ex; \
 		rsync \
 	; \
 	rm -rf /var/lib/apt/lists/*; \
+	ln -f -s /usr/bin/bash /usr/bin/sh ; \
 	find / \( \
 		-path /proc -o \
 		-path /dev -o \
