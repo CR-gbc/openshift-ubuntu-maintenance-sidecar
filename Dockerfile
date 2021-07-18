@@ -3,12 +3,19 @@ FROM ubuntu:latest
 ARG CHANGE_USER=0
 
 RUN set -ex; \
-	apt-get update; \
-	apt-get install -y \
+	apt-get update ; \
+	echo 'tzdata tzdata/Areas select America' | debconf-set-selections ; \
+	echo 'tzdata tzdata/Zones/America select Vancouver' | debconf-set-selections ; \
+	DEBIAN_FRONTEND="noninteractive" apt-get install -y \
+		tzdata \
+		sed \
+		curl \
 		git \
-		vim \
+		neovim \
 		rsync \
+		composer \
 	; \
+	useradd -u 12358 -g 0 -m -s /bin/bash sidecar ; \
 	rm -rf /var/lib/apt/lists/*; \
 	ln -f -s /usr/bin/bash /usr/bin/sh ; \
 	mv /usr/bin/dpkg /usr/bin/ddpkg ; \
@@ -23,6 +30,9 @@ RUN set -ex; \
 		-exec chgrp 0 {} \; -a \
 		-exec chown $CHANGE_USER {} \; \
 	\)	
+
+COPY ./docker-entrypoint.sh /
+ENTRYPOINT ["bash", "/docker-entrypoint.sh"]
 
 CMD ["sleep", "infinity"]
 
