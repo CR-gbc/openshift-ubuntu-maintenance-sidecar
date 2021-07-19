@@ -19,6 +19,7 @@ RUN set -ex; \
 		php-xml \
 		php-mysqli \
 		php-bcmath \
+		php-curl \
 		php-exif \
 		php-gd \
 		php-zip \
