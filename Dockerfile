@@ -51,6 +51,8 @@ RUN set -ex ; \
 ENV NODE_PATH $NVM_DIR/versions/node/v$NODE_VERSION/lib/node_modules
 ENV PATH      $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 
+VOLUME /var/www/html
+
 COPY ./docker-entrypoint.sh /
 ENTRYPOINT ["bash", "/docker-entrypoint.sh"]
 
