@@ -15,6 +15,13 @@ RUN set -ex; \
 		git \
 		neovim \
 		rsync \
+		php \
+		php-xml \
+		php-mysqli \
+		php-bcmath \
+		php-exif \
+		php-gd \
+		php-zip \
 		composer \
 	; \
 	rm -rf /var/lib/apt/lists/* ; \
