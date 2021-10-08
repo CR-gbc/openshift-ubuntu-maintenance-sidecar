@@ -40,7 +40,7 @@ RUN set -ex; \
 	chmod +x git-prompt.sh ; \
 	mv git-prompt.sh /usr/local/bin/git-prompt.sh ; \
 	echo -e 'source /usr/local/bin/git-prompt.sh\n' >> /home/sidecar/.bashrc ; \
-	echo -e 'export PS1=\'[\\u@\\h \\W$(__git_ps1 " (%s)")]\\$ \'' >> /root/.bash_profile ; \
+	echo -e 'export PS1=\'[\\u@\\h \\W$(__git_ps1 " (%s)")]\\$ \'' >> /root/.bash_profile ;  \
 	find / \( \
 		-path /proc -o \
 		-path /dev -o \
